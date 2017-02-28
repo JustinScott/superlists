@@ -17,9 +17,16 @@ class HomePageTest(TestCase):
         self.assertTemplateUsed(response, 'home.html')
 
     def test_can_save_a_POST_request(self):
-        response = self.client.post('/', data={'item_text': 'A new list item'})
+        response = self.test_can_write_a_POST_to_DB()
         self.assertIn('A new list item', response.content.decode())
         self.assertTemplateUsed(response, 'home.html')
+
+    def test_can_write_a_POST_to_DB(self):
+        response = self.client.post('/', data={'item_text': 'A new list item'})
+        self.assertEquals(Item.objects.count(), 1)
+        new_item = Item.objects.first()
+        self.assertEquals(new_item.text, 'A new list item')
+        return response
 
 
 class ItemModelTest(TestCase):
