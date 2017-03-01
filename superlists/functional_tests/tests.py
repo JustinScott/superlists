@@ -105,6 +105,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertIn('Buy milk', page_text)
 
         # Satisfied, they both go back to sleep
+        
 
     def wait_for_row_in_list_table(self, row_text):
         start_time = time.time()
@@ -116,6 +117,7 @@ class NewVisitorTest(LiveServerTestCase):
                 return
             except (AssertionError, WebDriverException) as e:
                 if time.time() - start_time > MAX_WAIT:
+                    print('TIMEOUT')
                     raise e
                 time.sleep(0.5)
 
