@@ -1,7 +1,5 @@
 from django.core.urlresolvers import resolve
 from django.test import TestCase
-from django.http import HttpRequest
-from django.template.loader import render_to_string
 from lists.views import home_page
 from lists.models import Item, List
 
@@ -99,6 +97,7 @@ class ListViewTest(TestCase):
         self.assertContains(response, 'itemey 1')
         self.assertContains(response, 'itemey 2')
 
+
 class NewItemTest(TestCase):
 
     def test_can_save_a_POST_request_to_an_existing_list(self):
@@ -125,3 +124,5 @@ class NewItemTest(TestCase):
         )
 
         self.assertRedirects(response, '/lists/%d/' % (correct_list.id,))
+
+
