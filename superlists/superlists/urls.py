@@ -18,5 +18,5 @@ from lists import views
 
 urlpatterns = [
     url(r'^$', views.home_page, name='home'),
-    # url(r'^next_item$', views.next_item, name='next')
+    url(r'^lists/the-one/$', views.view_list, name='view_list')
 ]
