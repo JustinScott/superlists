@@ -3,20 +3,15 @@ from lists.models import Item
 
 
 def home_page(request):
-    if request.method == 'POST':
-        t = request.POST.get('item_text', '')
-        if t != '':
-            Item.objects.create(text=t)
-        return redirect('/lists/the-one/')
     return render(request, 'home.html')
 
 
 def view_list(request):
-    if request.method == 'POST':
-        t = request.POST.get('item_text', '')
-        if t != '':
-            Item.objects.create(text=t)
-        return redirect('/lists/the-one/')
-
     items = Item.objects.all()
     return render(request, 'list.html', {'items': items})
+
+
+def new_list(request):
+    if request.POST.get('item_text', '') != '':
+        Item.objects.create(text=request.POST['item_text'])
+    return redirect('/lists/the-one/')
