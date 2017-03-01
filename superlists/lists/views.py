@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from lists.models import Item
+from lists.models import Item, List
 
 
 def home_page(request):
@@ -13,5 +13,6 @@ def view_list(request):
 
 def new_list(request):
     if request.POST.get('item_text', '') != '':
-        Item.objects.create(text=request.POST['item_text'])
+        _list = List.objects.create()
+        Item.objects.create(text=request.POST['item_text'], list=_list)
     return redirect('/lists/the-one/')
