@@ -1,0 +1,5 @@
+{
+  "tests.py::NewVisitorTest::test_can_start_a_list_and_retrieve_it_later": true,
+  "tests.py::NewVisitorTest::test_layout_and_styling": true,
+  "tests.py::NewVisitorTest::test_multiple_users_can_start_lists_at_different_urls": true
+}
