@@ -14,10 +14,10 @@ def view_list(request, list_id):
 def new_list(request):
     _list = List.objects.create()
     Item.objects.create(text=request.POST['item_text'], list=_list)
-    return redirect(f'/lists/{_list.id}/')
+    return redirect('/lists/{}/'.format(_list.id) )
 
 
 def add_item(request, list_id):
     _list = List.objects.get(id=list_id)
     Item.objects.create(text=request.POST['item_text'], list=_list)
-    return redirect(f'/lists/{_list.id}/')
+    return redirect('/lists/{}/'.format(_list.id))

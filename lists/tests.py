@@ -81,7 +81,7 @@ class ListViewTest(TestCase):
         response = self.client.post('/lists/new', data={'item_text': 'A new list item'})
         self.assertEquals(response.status_code, 302)
         _list = List.objects.first()
-        self.assertEquals(response['location'], f'/lists/{_list.id}/')
+        self.assertEquals(response['location'], '/lists/{}/'.format(_list.id))
 
     # def test_uses_list_template(self):
     #     response = self.client.get('/lists/the-only-list-in-the-world/')
